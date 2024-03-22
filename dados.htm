@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background:url(bg.jpg);
+  font-family:arial;
+  padding:20px;
+}
+
+#dice-button {
+  transition: transform 1s;
+  border:none;
+}
+
+#dice-button:active {
+  transform: rotate(360deg);
+}
+input {
+}
+label {
+color:#09193A;
+}
+
+#question {
+color:#09193A;
+font-weight:700;
+font-size:1.5rem;
+max-width:800px;
+}
+</style>
+
+
+  <title>SoftPlanet</title>
+
+</head>
+<body>
+<center>
+<img src="tittle_04.png"><br>
+<button id="dice-button" onclick="rollDice()">
+  <img id="dice-image" src="dice-1.png">
+</button>
+
+  <p id="question"></p><br/><br/>
+  <div id="options" style="width:500px;"></div></center>
+
+  <script>
+var questions = [
+  {
+    question: "Cuál de las siguientes NO es una responsabilidad del área de Mercadeo:",
+    options: ["Apoyar la gestión de ventas del área Comercial", "Cuidar la consistencia y homogeneidad en la comunicación", "Cuidar la sostenibilidad y responsabilidad social en la comunicación", "Posicionar la marca en los diferentes mercados que atendemos"],
+    correctAnswer: "Cuidar la sostenibilidad y responsabilidad social en la comunicación"
+  },
+  
+    {
+    question: "En PersonalSoft estamos comprometidos con el desarrollo y crecimiento de nuestros Softers",
+
+  },
+  {
+    question: "A qué gerencia pertenece el área de Mercadeo:",
+    options: ["A la gerencia de Gestión Humana", "A la gerencia de Comunicaciones y Publicidad", "A la gerencia de Negocios", "A la gerencia de Atención al Cliente"],
+    correctAnswer: "A la gerencia de Negocios"
+  },
+  
+      {
+    question: "En PersonalSoft la excelencia es el sello en todo lo que hacemos.",
+
+  },
+  
+  {
+    question: "Qué es más relevante a la hora de que incrementemos la exposición de la marca en redes sociales:",
+    options: ["Darle like o seguir todos los perfiles sociales: Facebook, Linked In, Instagram, etc", "Comentar y compartir la mayor cantidad de publicaciones de PersonalSoft en redes", "Ingresar con frecuencia a nuestro sitio web", "Crear historias para redes con el logo de la compañía"],
+    correctAnswer: "Comentar y compartir la mayor cantidad de publicaciones de PersonalSoft en redes"
+  },
+  
+        {
+    question: "En PersonalSoft somos cuidadosos en el trato que brindamos, somos integros",
+
+  }
+];
+
+var currentQuestion;
+
+function rollDice() {
+  var diceNumber = Math.floor(Math.random() * 6) + 1;
+  var diceImage = document.getElementById("dice-image");
+  diceImage.src = "dice-" + diceNumber + ".png";
+  // ... rest of the code
+
+
+  var randomIndex = Math.floor(Math.random() * questions.length);
+  currentQuestion = questions[randomIndex];
+  document.getElementById("question").innerHTML = currentQuestion.question;
+  
+  // Clear any existing options
+  document.getElementById("options").innerHTML = "";
+  
+  // Create radio buttons for each option
+  for (var i = 0; i < currentQuestion.options.length; i++) {
+    var option = currentQuestion.options[i];
+    var radioButton = document.createElement("input");
+    radioButton.type = "radio";
+    radioButton.name = "option";
+    radioButton.value = option;
+    radioButton.onclick = checkAnswer;
+    var label = document.createElement("label");
+    label.innerHTML = option + "<br><br>";
+    
+    document.getElementById("options").appendChild(radioButton);
+    document.getElementById("options").appendChild(label);
+  }
+}
+
+function checkAnswer() {
+  if (this.value == currentQuestion.correctAnswer) {
+    alert("¡Correcto!");
+  } else {
+    alert("¡Incorrecto!");
+  }
+}
+
+  </script>
+</body>
+</html>

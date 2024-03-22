@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	background-image:url(bg.jpg);
+}
+.btn {
+	padding:16px;
+	background:#660099;
+	color:white;
+	font-size:1.8rem!important;
+	margin:10px;
+	border-radius:8px;
+	border:none;
+	cursor:pointer;
+}
+
+.container {
+	width:600px!important;
+}
+.btn:hover  {
+	background:#0099FF;
+	color:#660099!important;
+}
+
+p {
+font-size:1.8rem;
+}
+</style>
+  <meta charset="UTF-8">
+  <title>SoftPlanet</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    function validarRespuesta() {
+      var respuestas = document.getElementsByName('respuesta');
+      var seleccionada = false;
+      for (var i = 0; i < respuestas.length; i++) {
+        if (respuestas[i].checked) {
+          seleccionada = true;
+          if (respuestas[i].value == "opcion3") {
+            alert("¡Respuesta correcta!");
+          } else {
+            alert("Respuesta incorrecta, vuelve a intentarlo");
+          }
+          break;
+        }
+      }
+      if (!seleccionada) {
+        alert("Por favor, selecciona una respuesta");
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+  <center><img src="tittle_06.png" ></center>
+    <center><img src="head.png" width=600></center>
+    <p>Juan inició a trabajar en la empresa  «Mundo mágico de las mascotas» está recibiendo la inducción frente a su cargo que será de asesor comercial en la tienda de mascotas, el líder de Seguridad y Salud en el Trabajo le explica cuáles serán sus responsabilidades frente al Sistema de SST, entre las cuales NO  se encuentra.
+</p>
+    <form>
+      <div class="radio">
+        <label>
+          <input type="radio" name="respuesta" value="opcion1">
+          A. Cumplir las políticas, normas y reglamentos e instrucciones del Sistema de SST
+
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="respuesta" value="opcion2">
+          B. Participar en la prevención de riesgos laborales mediante las actividades que se realicen en la empresa
+
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="respuesta" value="opcion3">
+          C. Liderar las reuniones y actividades en torno al liderazgo del Sistema de Gestión SST
+
+        </label>
+      </div>
+	  
+	        <div class="radio">
+        <label>
+          <input type="radio" name="respuesta" value="opcion4">
+          D. Todas las anteriores 
+
+        </label>
+		
+      </div>
+    </form>
+    <br>
+    <center><button class="btn" onclick="validarRespuesta()">Enviar respuesta</button></center>
+  </div>
+</body>
+</html>
